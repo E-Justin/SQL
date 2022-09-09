@@ -3,6 +3,25 @@
    three cities that have the most completed trade orders in 
    descending order. Output the city and number of orders."""
 
+''' 9/9 second attempt '''
+SELECT 
+u.city, COUNT(u.city)
+FROM trades t
+INNER JOIN 
+users u
+ON t.user_id = u.user_id
+WHERE t.status = 'Completed'
+GROUP BY u.city
+ORDER BY count DESC
+LIMIT 3;
+
+
+
+
+
+
+
+''' 9/8: 1st attempt '''
 WITH combined AS (
   SELECT u.user_id as uuser_id, t.user_id, u.city, t.status
   FROM trades t
