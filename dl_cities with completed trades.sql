@@ -5,14 +5,14 @@
 
 ''' 9/9 second attempt '''
 SELECT 
-u.city, COUNT(u.city)
+u.city as city,
+COUNT(u.city) as total_orders
 FROM trades t
-INNER JOIN 
-users u
+INNER JOIN users u
 ON t.user_id = u.user_id
 WHERE t.status = 'Completed'
-GROUP BY u.city
-ORDER BY count DESC
+GROUP BY city
+ORDER BY total_orders DESC
 LIMIT 3;
 
 
